@@ -1,0 +1,13 @@
+Enable-Migrations                                     //This command has added a Migrations folder to our project, this new folder contains two files: The Configuration class and An InitialCreate migration
+Add-Migration MigrationName
+Update-Database
+Update-Database –Verbose                              //you can see the SQL that Code First Migrations is running.
+Update-Database –TargetMigration: MigrationName       //migrate to a specific version(including downgrade)
+Update-Database –TargetMigration: $InitialDatabase    //roll all the way back to an empty database
+Update-Database -Script -SourceMigration: $InitialDatabase -TargetMigration: AddPostAbstract      //instead of actually applying the changes it will write them out to a .sql file
+
+MigrateDatabaseToLatestVersion initializer: automatically upgrading on application startup. Usage example:
+Database.SetInitializer(new MigrateDatabaseToLatestVersion<BlogContext, Configuration>());
+
+Further info: https://msdn.microsoft.com/en-us/data/jj591621.aspx
+

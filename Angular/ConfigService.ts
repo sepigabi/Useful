@@ -77,3 +77,8 @@ constructor(private _configService: ConfigService) {
     
 this._configService.getConfigValue("redcolor");
 
+reloadConfig() {
+        this._configService.load();
+    }
+
+

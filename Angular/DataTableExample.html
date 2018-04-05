@@ -1,0 +1,183 @@
+<div id="newFoos">
+    <div class="row">
+        <div class="col-lg-3">
+            <!--<label for="clientNameFilter"></label>-->
+            <div class="input-group">
+                <input type="text" id="clientNameFilter" #clientNameFilter class="form-control" (input)="narrowByClientName($event.target.value)" placeholder="Szűkítés ügyfél névre..." />
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <!--<label for="currentStatusId">Szűkítés státusz alapján</label>-->
+            <select class="form-control" id="currentStatusId" #currentStatusFilter name="CurrentStatusId" (change)="narrowByCurrentState($event.target.value)">
+                <option *ngFor="let s of states" [class.foreign]="s.Id === null || s.Id === 0" [value]="s.Id">{{s.Name}}</option>
+            </select>
+        </div>
+        <div class="col-lg-3">
+            <!--<label for="SPECNameFilter"></label>-->
+            <div class="input-group">
+                <input type="text" id="SPECNameFilter" #SPECNameFilter class="form-control" (input)="narrowBySPEC($event.target.value)" placeholder="Szűkítés SPEC névre..." />
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            </div>
+        </div>
+        <button class="btn btn-default btn-sm refresh-button" (click)="clearFilters()" type="button">
+            <i class="fa fa-refresh"></i>
+        </button>
+    </div>
+    <hr />
+    <data-table [indexColumn]="false"
+                headerTitle="Új igénylések"
+                [items]="items"
+                [itemCount]="itemCount"
+                (reload)="reloadNewFoos($event)"
+                [substituteRows]="false"
+                [limit]="5"
+                [rowTooltip]="rowTooltip"
+                [expandableRows]="true"
+                [multiSelect]="true"
+                [selectColumn]="true"
+                [rowColors]="rowColors">
+        <ng-template #dataTableExpand let-item="item">
+            <table class="table-striped">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Dátum</th>
+                        <th>Esemény típusa</th>
+                        <th>Kinél</th>
+                        <th>Egyéb adatok</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let e of item.FooEvents">
+                        <td>{{e.Date | date:'yyyy/MM/dd HH:MM'}}</td>
+                        <td>{{e.FooEventTypeName}}</td>
+                        <td>{{e.RelatedUserName}}</td>
+                        <td>{{e.AdditionalData}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-template>
+        <data-table-column [property]="'FooReceived'"
+                           header="Foo ID Beérkezés dátuma"
+                           [sortable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                <span>Foo ID</span>
+                <br /><span>Beérkezés dátuma</span>
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span>ID:{{item.Id}}</span>
+                <br /><span>{{item.FooReceived | date:'yyyy/MM/dd'}}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'ClientName'"
+                           header="Ügyfél neve, címe, telefonszáma"
+                           width="200px"
+                           [resizable]="true"
+                           [sortable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                <span>Ügyfél neve, címe, telefonszáma</span>
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span>{{item.ClientName}}</span>
+                <br /><span>{{item.ClientAddress}}</span>
+                <br /><span>{{item.ClientPhone}}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="OriginationEnum"
+                           width="80px"
+                           header="Honnan érkezett a Foo?">
+            <ng-template #dataTableHeader let-item="item">
+                <span>Honnan</span>
+                <br /><span>érkezett a</span>
+                <br /><span>Foo?</span>
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <div class="cscgenerated" *ngIf="isCscGenerated(item)"></div>
+                <div class="fieldgenerated" *ngIf="isFieldGenerated(item)"></div>
+                <div class="salespointgenerated" *ngIf="isSalespointGenerated(item)"></div>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="ALT"
+                           header="ALT/SPEC neve Általános/Speciális"
+                           width="122px">
+            <ng-template #dataTableHeader let-item="item">
+                <span>ALT/SPEC neve</span>
+                <br /><span>Általános/Speciális</span>
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span>{{item.ALT}}/{{item.SPEC}}</span>
+                <br /><span>{{item.DM_Code}}<span *ngIf="item.Agency_Id !== null">/{{item.Agency_Id}}</span></span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="RequestedProduct"
+                           width="80px"
+                           header="Igényelt termék típus">
+            <ng-template #dataTableHeader let-item="item">
+                <span>Igényelt</span>
+                <br /><span>termék</span>
+                <br /><span>típus</span>
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span>{{item.RequestedProduct}}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="'RequestedAmount'"
+                           header="Igényelt összeg"
+                           [sortable]="true"
+                           [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                <span>Igényelt összeg</span>
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span>{{item.RequestedAmount}}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="IsFooAssignedToSPEC"
+                           width="80px"
+                           header="Foo leküldve">
+            <ng-template #dataTableHeader let-item="item">
+                <span>Foo</span>
+                <br /><span>leküldve</span>
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <div class="yes" *ngIf="item.IsFooAssignedToSPEC"></div>
+                <div class="no" *ngIf="!item.IsFooAssignedToSPEC"></div>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]="IsAppointmentScheduled"
+                           width="80px"
+                           header="Látogatási időpont">
+            <ng-template #dataTableHeader let-item="item">
+                <span>Látogatási</span>
+                <br /><span>időpont</span>
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <div class="yes" *ngIf="item.IsAppointmentScheduled"></div>
+                <div class="no" *ngIf="!item.IsAppointmentScheduled"></div>
+            </ng-template>
+        </data-table-column>
+        <data-table-column [property]=""
+                           header="">
+            <ng-template #dataTableCell let-item="item">
+                <button (click)="rowDetails(item)" class="btn btn-sm btn-primary">Részletek</button>
+            </ng-template>
+        </data-table-column>
+    </data-table>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <label for="destinationSPECs"><b>Cél SPEC:</b></label>
+            <select [(ngModel)]="selectedUser" class="form-control" id="destinationSPECs">
+                <option *ngFor="let u of possibleSPECs" [ngValue]="u" [class.foreign]="!u.OwnDescendat">{{u.Name}}</option>
+            </select>
+        </div>
+        <div class="col-lg-6">
+            <label for="assignComment"><b>Megjegyzés:</b></label>
+            <input type="text" class="form-control" id="assignComment" [(ngModel)]="assignComment" />
+        </div>
+    </div>
+    <div id="assignButton" class="col-lg-4">
+        <button (click)="assign(newFooTable.selectedRows)" type="submit" class="btn btn-primary">Leküld</button>
+    </div>
+    <router-outlet></router-outlet>
+</div>

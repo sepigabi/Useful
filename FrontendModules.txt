@@ -1,0 +1,9 @@
+ng-bootstrap:
+    npm install --save @ng-bootstrap/ng-bootstrap
+    https://ng-bootstrap.github.io/#/getting-started
+angular2-loaders-css:
+    npm install angular2-loaders-css --save
+    https://www.npmjs.com/package/angular2-loaders-css
+angular-4-data-table-bootstrap-4
+    npm install angular-4-data-table-bootstrap-4 --save
+    https://www.npmjs.com/package/angular-4-data-table-bootstrap-4

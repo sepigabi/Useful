@@ -4,6 +4,12 @@ ng-bootstrap:
 angular2-loaders-css:
     npm install angular2-loaders-css --save
     https://www.npmjs.com/package/angular2-loaders-css
-angular-4-data-table-bootstrap-4
+angular-4-data-table-bootstrap-4:
     npm install angular-4-data-table-bootstrap-4 --save
     https://www.npmjs.com/package/angular-4-data-table-bootstrap-4
+gulp:
+    npm install gulp --save-dev
+    http://www.codedigest.com/quick-start/14/using-of-gulp-gulpfilejs-in-visual-studio-2017
+systemjs-biulder:
+    npm install systemjs-builder
+    https://github.com/systemjs/builder

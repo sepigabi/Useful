@@ -65,5 +65,7 @@ module.exports = {
         //new HtmlWebpackPlugin({
         //    template: 'Views/Home/Index.cshtml'
         //})
-    ]
+    ],
+    devtool: "source-map",
+    watch: true
 };

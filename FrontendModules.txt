@@ -13,3 +13,9 @@ gulp:
 systemjs-biulder:
     npm install systemjs-builder
     https://github.com/systemjs/builder
+webpack:
+    npm install --save-dev webpack
+    npm install --save-dev webpack@<version>
+    npm install --save-dev webpack-cli
+    https://webpack.js.org/guides/installation/
+

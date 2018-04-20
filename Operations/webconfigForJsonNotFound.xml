@@ -1,0 +1,8 @@
+<system.webServer>
+    <staticContent>
+      <mimeMap fileExtension=".json" mimeType="application/json" />
+    </staticContent>
+  </system.webServer>
+  
+  
+  <!--Because the problem is that IIS has no JSON-File type by default (MIME) so you have to set it up-->

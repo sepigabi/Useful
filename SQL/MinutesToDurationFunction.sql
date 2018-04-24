@@ -16,9 +16,9 @@ RETURNS nvarchar(30)
 
 AS
 BEGIN
-declare @hours  nvarchar(20)
+declare @duration  nvarchar(20)
 
-SET @hours = 
+SET @duration = 
 	CASE WHEN @minutes >= 1440 THEN
 		(SELECT CAST((@minutes / 1440) AS VARCHAR(7)) + 'd ' +  
 						CASE WHEN (@minutes % 1440) > 0 THEN
@@ -42,7 +42,7 @@ SET @hours =
 			CAST((@minutes % 60) AS VARCHAR(2)) + 'm'
 		END
 	END
-return @hours
+return @duration
 END
 go
 grant exec on [MinutesToDuration] to ApplicationUsers

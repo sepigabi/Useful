@@ -1,0 +1,142 @@
+DIFFERENCE INNER JOIN VS CROSS APPLY:
+
+FROM:
+https://stackoverflow.com/questions/1139160/when-should-i-use-cross-apply-over-inner-join?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+
+Consider you have two tables.
+
+MASTER TABLE
+
+x------x--------------------x
+| Id   |        Name        |
+x------x--------------------x
+|  1   |          A         |
+|  2   |          B         |
+|  3   |          C         |
+x------x--------------------x
+DETAILS TABLE
+
+x------x--------------------x-------x
+| Id   |      PERIOD        |   QTY |
+x------x--------------------x-------x
+|  1   |   2014-01-13       |   10  |
+|  1   |   2014-01-11       |   15  |
+|  1   |   2014-01-12       |   20  |
+|  2   |   2014-01-06       |   30  |
+|  2   |   2014-01-08       |   40  |
+x------x--------------------x-------x
+There are many situations where we need to replace INNER JOIN with CROSS APPLY.
+
+1. Join two tables based on TOP n results
+
+Consider if we need to select Id and Name from Master and last two dates for each Id from Details table.
+
+SELECT M.ID,M.NAME,D.PERIOD,D.QTY
+FROM MASTER M
+INNER JOIN
+(
+    SELECT TOP 2 ID, PERIOD,QTY 
+    FROM DETAILS D      
+    ORDER BY CAST(PERIOD AS DATE)DESC
+)D
+ON M.ID=D.ID
+SQL FIDDLE
+The above query generates the following result.
+
+x------x---------x--------------x-------x
+|  Id  |   Name  |   PERIOD     |  QTY  |
+x------x---------x--------------x-------x
+|   1  |   A     | 2014-01-13   |  10   |
+|   1  |   A     | 2014-01-12   |  20   |
+x------x---------x--------------x-------x
+See, it generated results for last two dates with last two date's Id and then joined these records only in the outer query on Id, which is wrong. To accomplish this, we need to use CROSS APPLY.
+
+SELECT M.ID,M.NAME,D.PERIOD,D.QTY
+FROM MASTER M
+CROSS APPLY
+(
+    SELECT TOP 2 ID, PERIOD,QTY 
+    FROM DETAILS D  
+    WHERE M.ID=D.ID
+    ORDER BY CAST(PERIOD AS DATE)DESC
+)D
+SQL FIDDLE
+and forms the following result.
+
+x------x---------x--------------x-------x
+|  Id  |   Name  |   PERIOD     |  QTY  |
+x------x---------x--------------x-------x
+|   1  |   A     | 2014-01-13   |  10   |
+|   1  |   A     | 2014-01-12   |  20   |
+|   2  |   B     | 2014-01-08   |  40   |
+|   2  |   B     | 2014-01-06   |  30   |
+x------x---------x--------------x-------x
+Here's how it works. The query inside CROSS APPLY can reference the outer table, where INNER JOIN cannot do this (it throws compile error). When finding the last two dates, joining is done inside CROSS APPLY i.e., WHERE M.ID=D.ID.
+
+2. When we need INNER JOIN functionality using functions.
+
+CROSS APPLY can be used as a replacement with INNER JOIN when we need to get result from Master table and a function.
+
+SELECT M.ID,M.NAME,C.PERIOD,C.QTY
+FROM MASTER M
+CROSS APPLY dbo.FnGetQty(M.ID) C
+And here is the function
+
+CREATE FUNCTION FnGetQty 
+(   
+    @Id INT 
+)
+RETURNS TABLE 
+AS
+RETURN 
+(
+    SELECT ID,PERIOD,QTY 
+    FROM DETAILS
+    WHERE ID=@Id
+)
+SQL FIDDLE
+which generated the following result
+
+x------x---------x--------------x-------x
+|  Id  |   Name  |   PERIOD     |  QTY  |
+x------x---------x--------------x-------x
+|   1  |   A     | 2014-01-13   |  10   |
+|   1  |   A     | 2014-01-11   |  15   |
+|   1  |   A     | 2014-01-12   |  20   |
+|   2  |   B     | 2014-01-06   |  30   |
+|   2  |   B     | 2014-01-08   |  40   |
+x------x---------x--------------x-------x
+ADDITIONAL ADVANTAGE OF CROSS APPLY
+
+APPLY can be used as a replacement for UNPIVOT. Either CROSS APPLY or OUTER APPLY can be used here, which are interchangeable.
+
+Consider you have the below table(named MYTABLE).
+
+x------x-------------x--------------x
+|  Id  |   FROMDATE  |   TODATE     |
+x------x-------------x--------------x
+|   1  |  2014-01-11 | 2014-01-13   | 
+|   1  |  2014-02-23 | 2014-02-27   | 
+|   2  |  2014-05-06 | 2014-05-30   | 
+|   3  |     NULL    |    NULL      |
+x------x-------------x--------------x
+The query is below.
+
+SELECT DISTINCT ID,DATES
+FROM MYTABLE 
+CROSS APPLY(VALUES (FROMDATE),(TODATE))
+COLUMNNAMES(DATES)
+SQL FIDDLE
+which brings you the result
+
+  x------x-------------x
+  | Id   |    DATES    |
+  x------x-------------x
+  |  1   |  2014-01-11 |
+  |  1   |  2014-01-13 |
+  |  1   |  2014-02-23 |
+  |  1   |  2014-02-27 |
+  |  2   |  2014-05-06 |
+  |  2   |  2014-05-30 | 
+  |  3   |    NULL     | 
+  x------x-------------x

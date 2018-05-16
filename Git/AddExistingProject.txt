@@ -1,0 +1,10 @@
+Create a new repository on GitHub. (with .gitignore and readme.md !!)
+In Terminal, change the current working directory to your local project.
+cmd: git init
+Copy remote repository URL field from your GitHub repository.
+cmd: git remote add origin <remote repository URL>
+cmd: git remote -v
+cmd: git pull origin master
+cmd: git add --all
+cmd: git commit -m "First commit"
+cmd: git push origin master

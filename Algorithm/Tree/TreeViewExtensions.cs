@@ -1,4 +1,4 @@
-namespace TreeExample
+namespace Binarit.TOM2
 {
     using System;
     using System.Collections.Generic;
@@ -11,7 +11,7 @@ namespace TreeExample
             ObjectTreeRoot objectTreeRoot = new ObjectTreeRoot();
 
             HashSet<ObjectTreeItem> itemsSet = new HashSet<ObjectTreeItem>(objectTreeItems);
-            foreach(ObjectTreeItem objectTreeItem in itemsSet)
+            foreach (ObjectTreeItem objectTreeItem in objectTreeItems)
             {
                 if (String.IsNullOrEmpty(objectTreeItem.ParentId))
                 {
@@ -20,13 +20,15 @@ namespace TreeExample
                 }
             }
 
-            while(itemsSet.Count > 0)
+            while (itemsSet.Count > 0)
             {
-                ObjectTreeItem item = itemsSet.First();
-                if (IsExistNode(objectTreeRoot, item.ParentId, out ObjectTreeNode node))
+                foreach (ObjectTreeItem item in itemsSet.ToList())
                 {
-                    node.Children.Add(new ObjectTreeNode() { Id = item.Id, DisplayName = item.DisplayName, Link = item.Link });
-                    itemsSet.Remove(item);
+                    if (IsExistNode(objectTreeRoot, item.ParentId, out ObjectTreeNode node))
+                    {
+                        node.Children.Add(new ObjectTreeNode() { Id = item.Id, DisplayName = item.DisplayName, Link = item.Link });
+                        itemsSet.Remove(item);
+                    }
                 }
             }
 
@@ -36,10 +38,10 @@ namespace TreeExample
         private static Boolean IsExistNode(ObjectTreeRoot objectTreeRoot, String NodeId, out ObjectTreeNode foundedNode)
         {
             foundedNode = null;
-            foreach(ObjectTreeNode node in objectTreeRoot.Nodes)
+            foreach (ObjectTreeNode node in objectTreeRoot.Nodes)
             {
                 foundedNode = node.Find(n => n.Id == NodeId);
-                if(foundedNode != null)
+                if (foundedNode != null)
                 {
                     return true;
                 }

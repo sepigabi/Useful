@@ -50,13 +50,13 @@
 
     public DbModel(): base("name=ConnectionString")
         {
-            this.Configuration.LazyLoadingEnabled = false;
-            this.Configuration.ProxyCreationEnabled = false;
-            this.Configuration.AutoDetectChangesEnabled = true;
+            //this.Configuration.LazyLoadingEnabled = false;
+            //this.Configuration.ProxyCreationEnabled = false;
+            //this.Configuration.AutoDetectChangesEnabled = true;
 
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DbModel, DAL.Migrations.Configuration>("ConnectionString"));
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<DbModel, DAL.Migrations.Configuration>("ConnectionString"));
             var objectContext = (this as IObjectContextAdapter).ObjectContext;
-            objectContext.CommandTimeout = 360;
+            //objectContext.CommandTimeout = 360;
             objectContext.ObjectMaterialized += (sender, e) => DateTimeKindAttribute.Apply(e.Entity);
         }
 

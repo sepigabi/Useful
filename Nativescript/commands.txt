@@ -1,0 +1,26 @@
+tns create my-angular-app --ng
+cd my_angular-app
+tns run android
+
+nativescript-angular-cli installation:
+  tns extension install nativescript-angular-cli
+
+generate a component:
+  tns generate component <component-name>
+  tns g c <component-name>
+
+create a component inside a module:
+  tns generate component <component-name> <module-name>
+  tns g c <component-name> <module-name>
+
+create a module:
+  tns generate module <module-name>
+  tns g m <module-name>
+
+create a service
+  tns generate service <service-name>
+  tns g s <service-name>
+
+generate a shareable module:
+  tns generate shared-module <module-name>
+  tns g sm <module-name>

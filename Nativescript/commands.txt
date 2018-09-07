@@ -2,6 +2,9 @@ tns create my-angular-app --ng
 cd my_angular-app
 tns run android
 
+tns build android --clean
+tns help build
+
 nativescript-angular-cli installation:
   tns extension install nativescript-angular-cli
 

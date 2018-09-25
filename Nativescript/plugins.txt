@@ -10,7 +10,8 @@ Font awesome:
   link:https://www.npmjs.com/package/nativescript-fontawesome
   install:
     tns plugin add nativescript-fontawesome
-    download and Place font icon .ttf file in app/fonts
+    download .ttf from https://github.com/moayadnajd/nativescript-fontawesome/blob/master/fonts/fontawesome-webfont.ttf
+    Place font icon .ttf file in app/fonts
     call the init function in the you'r app.ts:
       import { Fontawesome } from 'nativescript-fontawesome';
       Fontawesome.init();

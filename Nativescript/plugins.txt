@@ -6,5 +6,14 @@ RadSideDrawer:
     https://play.nativescript.org/?template=play-ng&id=QgoOAr&v=3
     https://market.nativescript.org/?tab=samples&framework=all_frameworks&category=all_samples
 
-
+Font awesome:
+  link:https://www.npmjs.com/package/nativescript-fontawesome
+  install:
+    tns plugin add nativescript-fontawesome
+    download and Place font icon .ttf file in app/fonts
+    call the init function in the you'r app.ts:
+      import { Fontawesome } from 'nativescript-fontawesome';
+      Fontawesome.init();
+  usage:
+    <Label class="fa" text="{{'fa-bluetooth' | fontawesome }}"></Label> 
  

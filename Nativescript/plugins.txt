@@ -5,6 +5,9 @@ RadSideDrawer:
     https://docs.telerik.com/devtools/nativescript-ui/Controls/Angular/SideDrawer/getting-started
     https://play.nativescript.org/?template=play-ng&id=QgoOAr&v=3
     https://market.nativescript.org/?tab=samples&framework=all_frameworks&category=all_samples
+  after: 
+    tns platform clean android
+    tns build android
 
 Font awesome:
   link:https://www.npmjs.com/package/nativescript-fontawesome

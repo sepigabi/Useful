@@ -27,3 +27,6 @@ create a service
 generate a shareable module:
   tns generate shared-module <module-name>
   tns g sm <module-name>
+
+tns platform clean android
+tns build android

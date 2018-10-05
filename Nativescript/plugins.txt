@@ -19,5 +19,17 @@ Font awesome:
       import { Fontawesome } from 'nativescript-fontawesome';
       Fontawesome.init();
   usage:
-    <Label class="fa" text="{{'fa-bluetooth' | fontawesome }}"></Label> 
+    <Label class="fa" text="{{'fa-bluetooth' | fontawesome }}"></Label>
+
+Exit:
+  link: 
+    https://github.com/dvabuzyarov/nativescript-exit
+    https://www.npmjs.com/package/nativescript-exit
+  install:
+    npm install nativescript-exit --save
+  usage:
+    import {exit} from 'nativescript-exit';
+    exit();
+
+
  

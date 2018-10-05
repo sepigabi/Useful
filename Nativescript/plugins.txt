@@ -31,5 +31,17 @@ Exit:
     import {exit} from 'nativescript-exit';
     exit();
 
-
+Insomnia: (Prevent device from going to sleep)
+  link:
+    https://github.com/EddyVerbruggen/nativescript-insomnia
+  install:
+    tns plugin add nativescript-insomnia
+  usage:
+    import { keepAwake, allowSleepAgain } from "nativescript-insomnia";
+    insomnia.keepAwake().then(function() {
+      console.log("Insomnia is active");
+    })
+    insomnia.allowSleepAgain().then(function() {
+      console.log("Insomnia is inactive, good night!");
+    })
  

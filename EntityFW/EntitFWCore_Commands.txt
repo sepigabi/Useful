@@ -1,0 +1,7 @@
+
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
+
+Add-Migration InitialCreate
+Update-Database
+Script-Migration -from... -to....
+Script-Migration -idempotent

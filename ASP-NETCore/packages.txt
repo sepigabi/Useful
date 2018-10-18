@@ -1,1 +1,4 @@
 Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection
+
+Install-Package Microsoft.AspNetCore.Identity.EntityFrameworkCore
+Install-Package Microsoft.AspNetCore.Authentication.Cookies

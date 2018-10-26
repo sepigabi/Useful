@@ -3,3 +3,4 @@ http://www.talkingdotnet.com/implement-asp-net-core-spa-template-feature-in-angu
 http://www.talkingdotnet.com/add-angular-6-material-angular-6-asp-net-core-app/
 https://github.com/dotnet-architecture/eShopOnWeb/tree/master/src/Infrastructure/Services
 http://jasonwatmore.com/post/2018/05/16/angular-6-user-registration-and-login-example-tutorial
+https://malcoded.com/posts/angular-file-upload-component-with-express

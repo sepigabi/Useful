@@ -1,0 +1,3 @@
+display: inline //sorban helyezkedik el
+display: inline-block // sorban helyezkedik el, és lehetőség van külön width, és height megadásra
+display: block  //külön sorban helyezkedik el

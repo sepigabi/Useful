@@ -8,3 +8,8 @@ cmd: git pull origin master
 cmd: git add --all
 cmd: git commit -m "First commit"
 cmd: git push origin master
+
+
+ha ez a hiba : refusing to merge unrelated histories
+akkor:
+git pull origin master --allow-unrelated-histories

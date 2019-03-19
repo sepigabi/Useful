@@ -138,8 +138,16 @@ public class ErrorHandler : HttpClientHandler
                         return true;
                     }
                 }
-                catch (WebException)
+                catch (WebException e)
                 {
+                    if (e.Status == WebExceptionStatus.ProtocolError)
+                    {
+                        var response = e.Response as HttpWebResponse;
+                        if (response?.StatusCode == HttpStatusCode.Unauthorized || response?.StatusCode == HttpStatusCode.Found)
+                        {
+                            return true;
+                        }
+                    }
                     return false;
                 }
             }
@@ -157,8 +165,16 @@ public class ErrorHandler : HttpClientHandler
                         return true;
                     }
                 }
-                catch (WebException)
+                catch (WebException e)
                 {
+                    if (e.Status == WebExceptionStatus.ProtocolError)
+                    {
+                        var response = e.Response as HttpWebResponse;
+                        if (response?.StatusCode == HttpStatusCode.Unauthorized || response?.StatusCode == HttpStatusCode.Found)
+                        {
+                            return true;
+                        }
+                    }
                     return false;
                 }
             }

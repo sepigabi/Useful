@@ -1,0 +1,32 @@
+source: https://stackoverflow.com/questions/922798/how-to-ignore-files-directories-in-tfs-for-avoiding-them-to-go-to-central-source
+
+
+I recommend you follow NuGet's instructions but just to recap what I did:
+
+Make sure your packages folder is not committed to TFS. If it is, get it out of there.
+Everything else we create below goes into the same folder that your .sln file exists in unless otherwise specified (NuGet's instructions aren't completely clear on this).
+Create a .nuget folder. You can use Windows Explorer to name it .nuget. for it to successfully save as .nuget (it automatically removes the last period) but directly trying to name it .nuget may not work (you may get an error or it may change the name, depending on your version of Windows).
+Inside of that folder, create a NuGet.config file and add the following contents and save it:
+NuGet.config:
+
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <solution>
+        <add key="disableSourceControlIntegration" value="true" />
+    </solution>
+</configuration>
+Go back in your .sln's folder and create a new text file and name it .tfignore (if using Windows Explorer, use the same trick as above and name it .tfignore.)
+Put the following content into that file:
+.tfignore:
+
+# Ignore the NuGet packages folder in the root of the repository.
+# If needed, prefix 'packages' with additional folder names if it's 
+# not in the same folder as .tfignore.
+packages
+
+# include package target files which may be required for msbuild,
+# again prefixing the folder name as needed.
+!packages/*.targets
+
+Save all of this, commit it to TFS, then close & re-open Visual Studio and the Team Explorer should no longer identify the packages folder as a pending check-in.
+Copy/pasted via Windows Explorer the .tfignore file and .nuget folder to all of my various solutions and committed them and I no longer have the packages folder trying to sneak into my source control repo!

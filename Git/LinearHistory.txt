@@ -1,0 +1,10 @@
+This is a feature branch workflow with Visual studio
+
+- checkout new feature branch from master
+- do some commits in the feature branch
+- sync
+- checkout master
+- merge from feature branch (check the commmit changes after merging checkbox)
+- delete feature branch
+- sync
+- right click on the feature branch under remotes/origin and Delete brancg from remote

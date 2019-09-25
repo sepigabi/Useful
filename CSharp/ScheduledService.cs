@@ -1,4 +1,8 @@
 //Daily run
+//abban az esetben, ha checkTimer.Interval -ja kisebb lesz mint a DomSomething() futási ideje, akkor a checkTimer_Elapsed-be
+//többször is belefut. Ezt kezelni érdemes, ha gondot okoz, hogy a DoSomething() többször is lefut. Pl:
+// a DomSomething()-ban van egy vizsgálat, hoyg éppen fut-e már (boolean értéket állítunk a Domesomething() elején és végén true->false)
+// leheta DomSomething() aszinkron metódus, ha sokáig fut, és a checkTimer_Elapsed-ben NEM await-elünk rá, legalábbis nem a ScheduleChecker() előtt.
 
 class MyClass{
 static Timer checkerTimer;

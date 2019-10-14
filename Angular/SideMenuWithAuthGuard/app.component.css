@@ -1,0 +1,220 @@
+.page {
+    width: 100%;
+}
+
+header {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 55px;
+    justify-content: center;
+    align-items: center;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    font-size: 1.1rem;
+    color: white;
+    z-index: 3;
+}
+    header span{
+        margin-left: 20px;
+    }
+
+    header img {
+        margin-left: 80px;
+        height: 40px;
+    }
+
+main {
+    padding-top: 55px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+    main > div {
+        margin: auto;
+    }
+
+#nav-container {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+    #nav-container .bg {
+        position: absolute;
+        top: 55px;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 55px);
+        visibility: hidden;
+        opacity: 0;
+        transition: .3s;
+        background: #000;
+    }
+
+    #nav-container:focus-within .bg {
+        visibility: visible;
+        opacity: .6;
+    }
+
+    #nav-container * {
+        visibility: visible;
+    }
+
+.button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+    -webkit-appearance: none;
+    border: 0;
+    background: transparent;
+    border-radius: 0;
+    height: 55px;
+    width: 30px;
+    cursor: pointer;
+    pointer-events: auto;
+    margin-left: 25px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.icon-bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: white;
+    transition: .3s;
+}
+
+    .icon-bar + .icon-bar {
+        margin-top: 5px;
+    }
+
+#nav-container:focus-within .button {
+    pointer-events: none;
+}
+
+#nav-container:focus-within .icon-bar:nth-of-type(1) {
+    transform: translate3d(0,8px,0) rotate(45deg);
+}
+
+#nav-container:focus-within .icon-bar:nth-of-type(2) {
+    opacity: 0;
+}
+
+#nav-container:focus-within .icon-bar:nth-of-type(3) {
+    transform: translate3d(0,-8px,0) rotate(-45deg);
+}
+
+#nav-content {
+    margin-top: 55px;
+    padding: 20px;
+    width: 90%;
+    max-width: 300px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: calc(100% - 55px);
+    background: #ececec;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    transform: translateX(-100%);
+    transition: transform .3s;
+    will-change: transform;
+    contain: paint;
+}
+
+    #nav-content ul {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #nav-content li a {
+        margin-left: 30px;
+        padding: 10px 5px;
+        display: block;
+        transition: color .1s;
+    }
+        #nav-content li a:hover {
+            color: #BF7497;
+        }
+
+    #nav-content li:not(.small) + .small {
+        margin-top: auto;
+    }
+
+
+#nav-container:focus-within #nav-content {
+    transform: none;
+}
+
+.collapsable > label::before {
+    padding: 10px 5px;
+    content: "\276f";
+    transition: all 0.5s;
+    font-size: large;
+    display: inline-block;
+}
+
+.collapsable > label {
+    position: relative;
+    width: 100%;
+    padding: 10px 5px;
+    display: block;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+li.collapsable ul {
+    visibility: hidden;
+    opacity: 0;
+    max-height: 0;
+    transition: all 0.5s;
+}
+
+li.collapsable input[type=checkbox] {
+    display: none;
+}
+
+li.collapsable input:checked ~ ul{
+    visibility: visible;
+    opacity: 1;
+    max-height: 999px;
+}
+
+li.collapsable input:checked ~ label::before {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+}
+
+deputy-combobox{
+    display:block;
+    margin-right: 10px;
+}
+
+a,
+a:visited,
+a:focus,
+a:active,
+a:link {
+    text-decoration: none;
+    outline: 0;
+}
+
+a {
+    color: currentColor;
+    transition: .2s ease-in-out;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}

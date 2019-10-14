@@ -1,0 +1,48 @@
+<div class="page">
+    <header #header tabindex="0" class="pblue">
+        <img src="../Images/Logo_RGB.png" />
+        <span #title></span>
+        <div class="ml-auto">
+            <deputy-combobox *ngIf="isUser"></deputy-combobox>
+        </div>
+    </header>
+    <div id="nav-container">
+        <div class="bg"></div>
+        <div class="button" tabindex="0">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </div>
+        <div id="nav-content" tabindex="0">
+            <ul>
+                <li *ngIf="isStaff || isManager" class="collapsable">
+                    <input type="checkbox" id="menu1" />
+                    <label for="menu1">Űrlapok</label>
+                </li>
+                <li *ngIf="isAdministrator" class="collapsable">
+                    <input type="checkbox" id="menu2" />
+                    <label for="menu2">Karbantartás</label>
+                    <ul>
+                        <li><a click)="handleNavigation('Szerződés szám')" [routerLink]="['closedL']" routerLinkActive="active">Szerződés szám</a></li>
+                    </ul>
+                </li>
+                <li *ngIf="isUser" class="collapsable">
+                    <input type="checkbox" id="menu3" />
+                    <label for="menu3">Igénylések</label>
+                    <ul>
+                        <li><a (click)="handleNavigation('Új igénylések')" [routerLink]="['newL']" routerLinkActive="active">Új igénylések</a></li>
+                        <li><a (click)="handleNavigation('Függő igénylések')" [routerLink]="['dependentL']" routerLinkActive="active">Függő igénylések</a></li>
+                        <li><a (click)="handleNavigation('Lezárt igénylések')" [routerLink]="['closedL']" routerLinkActive="active">Lezárt igénylések</a></li>
+                        <li><a (click)="handleNavigation('Hozzárendelés')" [routerLink]="['assignment']" routerLinkActive="active">Hozzárendelés</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <div class="container" style="margin-top: 20px;">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+</div>   

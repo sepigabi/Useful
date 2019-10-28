@@ -11,3 +11,6 @@ Database.SetInitializer(new MigrateDatabaseToLatestVersion<BlogContext, Configur
 
 Further info: https://msdn.microsoft.com/en-us/data/jj591621.aspx
 
+vissazállni kiindulóra - eltávolítani migartion-t:
+Update-Database -Migration:0
+Remove-Migration

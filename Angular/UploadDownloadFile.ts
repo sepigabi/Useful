@@ -55,6 +55,20 @@ addNewTemplateForm() {
         });
     }
 
+    printFile(templateId: number) {
+        this.busy = true;
+        const template = this.originalItems.filter(t => t.Id === templateId)[0];
+        this._templateService.downloadTemplateFile(templateId).subscribe((result) => {
+            const blob = new Blob([result], { type: 'application/pdf' });
+            const url = window.URL.createObjectURL(blob);
+            setTimeout(() => {
+                const newWindow = window.open(url);
+                newWindow.print();
+            }, 1)
+            this.busy = false;
+        });
+    }
+
 --------------------------------------------------------------------------------------------------------------------------------------
 Controller.cs
 

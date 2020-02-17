@@ -128,7 +128,7 @@ main {
     contain: paint;
 }
 
-    #nav-content ul {
+    #nav-content > ul {
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -137,7 +137,6 @@ main {
     #nav-content li a {
         margin-left: 30px;
         padding: 10px 5px;
-        display: block;
         transition: color .1s;
     }
         #nav-content li a:hover {
@@ -171,7 +170,7 @@ main {
 }
 
 li.collapsable ul {
-    visibility: hidden;
+    display: none;
     opacity: 0;
     max-height: 0;
     transition: all 0.5s;
@@ -182,7 +181,7 @@ li.collapsable input[type=checkbox] {
 }
 
 li.collapsable input:checked ~ ul{
-    visibility: visible;
+    display: block;
     opacity: 1;
     max-height: 999px;
 }

@@ -1,0 +1,4 @@
+1. módszer:
+  net user /domain xxxx (xxxx = the user name you want to look up).
+2.módszer:
+  whoami /groups

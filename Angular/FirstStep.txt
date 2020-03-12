@@ -1,0 +1,13 @@
+Create a Folder "MyFolder"
+> CD MyFolder
+Install latest angular cli in the folder locally:
+> npm install --save-dev @angular/cli@latest
+> CD..
+Create a new angular app:
+> ng new MyFolder
+Use SCSS syntax. It's newer than Sass syntax!
+> CD MyFolder
+Add angular material:
+> ng add @angular/material
+
+

@@ -14,6 +14,10 @@ public static string ToSafeFileName(this string filename )
                 invalidNonPrintableCharacters[ i ] = (char) i;
             }
             invalidNonPrintableCharacters.ForEach( c => filename = filename.Replace( c, '_' ) );
+        
+            //normalizeFileEndings:
+            var invalidFileEndings = new[] { ' ', '.' };
+            invalidFileEndings.ForEach( c => { if (filename[ filename.Length - 1 ] == c) filename = filename.Remove( filename.Length - 1 ); } );
 
             //replace reservedFileNames:
             var reservedFileNames = new[] { "CON", "PRN", "AUX", "NUL", "COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8", "COM9", "LPT1", "LPT2", "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9" };
@@ -35,10 +39,6 @@ public static string ToSafeFileName(this string filename )
                 }
                 splittedFileName = filename.Split( '.' );
             }
-
-            //normalizeFileEndings:
-            var invalidFileEndings = new[] { ' ', '.' };
-            invalidFileEndings.ForEach( c => { if (filename[ filename.Length - 1 ] == c) filename = filename.Remove( filename.Length - 1 ); } );
 
             logger.Debug( $"SafeFileName from {originalFileName} to {filename}" );
             return filename;

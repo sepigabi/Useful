@@ -1,0 +1,3 @@
+- amikor alter tableval hozzáadsz egy oszloport egy táblához és utána azt használni is akarod (pl update vgy tirggerben mint új mező)), de szeretnéd ha
+  az egész 1 tranzakcióban menne, mert akkor nem rakhatsz GO-t az alter table után ☹
+- vagy ha több fgv/sp/view/trigger 1 tranzakcióban kell felmenjen valami spéci ok miatt, akkor azt is dinamikusban kell, mert akkor oda sem rakhatsz GO-t ☹

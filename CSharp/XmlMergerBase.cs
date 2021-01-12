@@ -52,7 +52,7 @@ public abstract class XmlMergerBase
                     if (identifierAttribute != null)
                     {
                         var identifier = inheritedNode.Attribute( identifierAttribute ).Value;
-                        var existingNodeInBase = baseNodeGroup.Where( n => n.Attribute( identifierAttribute ).Value == identifier ).FirstOrDefault();
+                        var existingNodeInBase = baseNodeGroup.Where( n => n.Attribute( identifierAttribute )?.Value == identifier ).FirstOrDefault();
                         if (existingNodeInBase != null)
                         {
                             Merge( existingNodeInBase, inheritedNode );

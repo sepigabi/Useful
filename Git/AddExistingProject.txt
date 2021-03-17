@@ -13,3 +13,9 @@ cmd: git push origin master
 ha ez a hiba : refusing to merge unrelated histories
 akkor:
 git pull origin master --allow-unrelated-histories
+
+ha utólag lett a .gitignore file hozzáadva:
+cmd: git rm -r --cached . 
+cmd: git add .
+cmd: git commit -am "Remove ignored files and resubmitting files"
+cmd: git push origin master

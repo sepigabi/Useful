@@ -17,3 +17,6 @@ else
 {
   result.Insert(search, me);
 }
+//https://stackoverflow.com/questions/13170896/insert-into-a-list-alphabetically-c-sharp
+//https://debugmode.net/2010/09/18/inserting-element-in-sorted-generic-list-list-using-binary-search/
+//https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.binarysearch?view=net-5.0

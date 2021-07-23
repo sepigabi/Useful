@@ -1,13 +1,13 @@
 Create a new repository on GitHub. (with .gitignore and readme.md !!)
 In Terminal, change the current working directory to your local project.
-cmd: git init
+cmd: git init vagy git init -b main
 Copy remote repository URL field from your GitHub repository.
 cmd: git remote add origin <remote repository URL>
 cmd: git remote -v
-cmd: git pull origin master
+cmd: git pull origin master vagy git pull origin main
 cmd: git add --all
 cmd: git commit -m "First commit"
-cmd: git push origin master
+cmd: git push origin master vagy git push origin main
 
 
 ha ez a hiba : refusing to merge unrelated histories
@@ -19,3 +19,10 @@ cmd: git rm -r --cached .
 cmd: git add .
 cmd: git commit -am "Remove ignored files and resubmitting files"
 cmd: git push origin master
+
+ha át kell nevezni a master-t main-re: (local)
+git branch -m master main
+https://www.git-tower.com/learn/git/faq/git-rename-master-to-main/
+
+
+

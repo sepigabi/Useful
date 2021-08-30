@@ -39,3 +39,28 @@
 
        close fooCursor
        deallocate fooCursor
+       
+       ------------------------------------------------------------------------------------------
+       -MÁSIK MÓDSZER - csak egy helyen kell a fetch!!!
+       ------------------------------------------------------------------------------------------
+       declare fooCursor cursor forward_only     --Ha nem akarom a rekordokat módosítani, akkor declare fooCursor cursor fast_forward
+       for
+       select 
+             CID,
+             KID,
+             StatusCode
+       from #InsertedFoos
+       open fooCursor
+       
+       while 1=1
+		begin
+			fetch next from fooCursor into @ugyfelId, @kerdoivId, @statusCode
+			if @@fetch_status != 0
+				break		
+			print 'exec akarmilyen SP'
+			exec sp_set_foo_status @al_ugyfel_id = @ugyfelId, @al_kerdoiv_id = @kerdoivId, @as_status_code = @statusCode, @al_ModifierUserID = @modifierUserId, @SWP_Ret_Value = @SWP_Ret_Value output
+		end
+
+       close fooCursor
+       deallocate fooCursor
+       

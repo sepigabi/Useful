@@ -41,7 +41,7 @@
        deallocate fooCursor
        
        ------------------------------------------------------------------------------------------
-       -MÁSIK MÓDSZER - csak egy helyen kell a fetch!!!
+       --MÁSIK MÓDSZER - csak egy helyen kell a fetch!!!
        ------------------------------------------------------------------------------------------
        declare fooCursor cursor forward_only     --Ha nem akarom a rekordokat módosítani, akkor declare fooCursor cursor fast_forward
        for

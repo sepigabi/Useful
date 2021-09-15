@@ -11,7 +11,7 @@ public class ConfigurationManager
         {
         }
 
-        internal static ConfigurationManager Instance
+        public static ConfigurationManager Instance
         {
             get
             {
@@ -29,7 +29,7 @@ public class ConfigurationManager
             }
         }
 
-        internal T GetConfigurationValue<T>( String configurationName )
+        public T GetConfigurationValue<T>( String configurationName )
         {
             String configurationValue = GetConfigurationValue( configurationName );
             var typeConverter = TypeDescriptor.GetConverter( typeof( T ) );

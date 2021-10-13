@@ -42,6 +42,67 @@ namespace MobileClient.Portable.Extensions
                 await dbSet.AddAsync( data );
             }
         }
+        
+         public static void AddOrUpdate<T>( this DbSet<T> dbSet, IEnumerable<T> records )
+        where T : BusinessObjectBaseWithId
+        {
+            var dbContext = dbSet.GetContext();
+            foreach (var data in records)
+            {
+                var entry = dbContext.Entry(data);
+                object[] keyParts = entry.Metadata.FindPrimaryKey()
+                             .Properties
+                             .Select(p => entry.Property(p.Name).CurrentValue)
+                             .ToArray();
+                var exists = dbSet.Find(keyParts);
+                if (exists != null)
+                {
+                    exists.CopyFrom(data);
+                    dbContext.Entry(exists).State = EntityState.Modified;
+                    continue;
+                }
+                dbSet.Add( data );
+            }
+        }
+
+        public static async Task AddOrUpdateAsync<T>( this DbSet<T> dbSet, IEnumerable<T> records )
+        where T : BusinessObjectBaseWithId
+        {
+            var dbContext = dbSet.GetContext();
+            foreach (var data in records)
+            {
+                var entry = dbContext.Entry(data);
+                object[] keyParts = entry.Metadata.FindPrimaryKey()
+                             .Properties
+                             .Select(p => entry.Property(p.Name).CurrentValue)
+                             .ToArray();
+                var exists = await dbSet.FindAsync(keyParts);
+                if (exists != null)
+                {
+                    exists.CopyFrom(data);
+                    dbContext.Entry(exists).State = EntityState.Modified;
+                    continue;
+                }
+                await dbSet.AddAsync( data );
+            }
+        }
+
+        public static async Task AddOrUpdateComplexTypesAsync<T>( this DbSet<T> dbSet, IEnumerable<T> records, Func<int, Task<T>> loadFunction )
+        where T : BusinessObjectBaseWithId
+        {
+            var dbContext = dbSet.GetContext();
+            foreach (var data in records)
+            {
+                var existing = await loadFunction( data.Id );
+                if (existing != null)
+                {
+                    var visitor = new CopyFromBusinessObjectWithChangeTrackingVisitor<T>( dbContext, existing );
+                    data.Accept( visitor );
+                    continue;
+                }
+                await dbSet.AddAsync( data );
+            }
+        }
 
         public static DbContext GetContext<TEntity>( this DbSet<TEntity> dbSet )
         where TEntity : class

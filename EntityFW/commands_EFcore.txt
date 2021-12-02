@@ -1,0 +1,5 @@
+
+Tools reference: https://docs.microsoft.com/en-us/ef/core/cli/powershell#script-migration
+
+Script-Migration -To Migration2 -From Migration1
+Script-Migration -To Migration2 -From Migration1 -StartupProject EFCore.Migration -Project MobileClient.Portable 

@@ -25,4 +25,9 @@ git branch -m master main
 https://www.git-tower.com/learn/git/faq/git-rename-master-to-main/
 
 
+Új repo után ezeket be kell állítani, ha a global értéke nem megfelelő:
+GET: git config user.email
+SET: git config user.email "gabor.sepsei@binarit.hu"
 
+GET: git config user.name
+SET: git config user.name "Gabor Sepsei"

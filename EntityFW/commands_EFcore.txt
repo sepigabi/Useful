@@ -15,3 +15,6 @@ dotnet ef database update
 dotnet ef migrations remove
 dotnet ef migrations list
 
+dotnet ef migrations add InitialCreate --startup-project ../MetriDoc.API/
+dotnet ef migrations remove --startup-project ../MetriDoc.API/
+

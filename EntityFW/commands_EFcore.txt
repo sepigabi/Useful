@@ -3,3 +3,15 @@ Tools reference: https://docs.microsoft.com/en-us/ef/core/cli/powershell#script-
 
 Script-Migration -To Migration2 -From Migration1
 Script-Migration -To Migration2 -From Migration1 -StartupProject EFCore.Migration -Project MobileClient.Portable 
+
+
+
+
+------------------------
+dotnet tool update --global dotnet-ef
+
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+dotnet ef migrations remove
+dotnet ef migrations list
+

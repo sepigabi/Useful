@@ -31,3 +31,6 @@ SET: git config user.email "gabor.sepsei@binarit.hu"
 
 GET: git config user.name
 SET: git config user.name "Gabor Sepsei"
+
+Ezt is ha szeretnénk:
+git config pull.rebase true

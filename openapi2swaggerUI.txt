@@ -1,0 +1,20 @@
+1. Download/Create OpenApi Specification .yaml file for MyApi (name: myapi.yaml or myapi.json)
+2. Install Node.js. (if not already installed)
+3. Copy the javascript code shown below and save it to a file with the filename MY_OAS.js.
+    const express = require('express');
+    const app = express();
+    const port = 3000;
+    const swaggerUi = require('swagger-ui-express');
+    const YAML = require('yamljs');
+    const swaggerDocument = YAML.load('./myapi.yaml'); 
+    //const swaggerDocument = require('./ myapi.json');
+
+    var options = { };
+    app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
+    app.listen(port, () => console.log(`Swagger UI for My OpenApiSpecification listening on port ${port}!`))
+
+4. Install the required node packages by running npm from the command line:
+    npm install express swagger-ui-express yamljs
+5. Run the node app created. From the command line run the following:
+    node MY_OAS.js
+6. Browse to https://localhost:3000.

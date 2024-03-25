@@ -10,4 +10,14 @@ Use SCSS syntax. It's newer than Sass syntax!
 Add angular material:
 > ng add @angular/material
 
+Check node/npm version:
+node -v
+npm -v
+Check angular version:
+ng version
+First time install angular-cli globally:
+npm install -g @angular/cli
+Upgrade gloablly installed angular-cli to latest version:
+npm install -g @angular/cli@latest
+
 

@@ -1,0 +1,23 @@
+1. Telepítsd az Angular CLI GitHub Pages csomagot
+	ng add angular-cli-ghpages
+
+2. Építsd meg az alkalmazást a megfelelő konfigurációval
+az angular.json fájlban be kell állítani a baseHref értékét:
+	ng build --configuration production --base-href "/projektnev/"
+Vagy ha az alapértelmezett dist könyvtárba szeretnéd építeni:
+	ng build --output-path docs --base-href "/projektnev/"
+
+3. Deploy GitHub Pages-re
+Az alábbi parancs automatikusan feltölti az alkalmazásodat a GitHub Pages-re:
+	npx angular-cli-ghpages --dir=dist/projektnev
+Vagy ha a docs mappába építetted:
+	npx angular-cli-ghpages --dir=docs
+Ha ezzel gond van, megpróbálhatod ezt:
+	npx angular-cli-ghpages --base-href="https://felhasznalonev.github.io/projektnev/"
+
+4. GitHub Pages beállítása a repository-ban
+	Menj a GitHub Repository-d oldalára.
+	Navigálj a Settings → Pages menüpontba.
+	A "Branch" alatt válaszd ki az gh-pages branch-et (amit az angular-cli-ghpages automatikusan létrehozott).
+	Kattints a Save gombra.
+	Pár perc múlva elérhető lesz az oldal a https://felhasznalonev.github.io/projektnev/ címen.

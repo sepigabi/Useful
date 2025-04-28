@@ -4,7 +4,7 @@
 
 ### 1. Hozz létre két külön konfigurációs fájlt:
 - **Munkahelyi beállítások:** `D:/work/.gitconfig-work`
-- **Hobby beállítások:** `D:/home/.gitconfig-home`
+- **Hobby beállítások:** `D:/home/.gitconfig-personal`
 
 ### 2. Szerkeszd a globális `.gitconfig` fájlt:
 A globális `.gitconfig` fájl általában a következő helyen található:
@@ -16,8 +16,8 @@ Add hozzá a következő beállításokat:
 ```
 [includeIf "gitdir:D:/work/"]
     path = D:/work/.gitconfig-work
-[includeIf "gitdir:D:/home/"]
-    path = D:/home/.gitconfig-home
+[includeIf "gitdir:D:/personal/"]
+    path = D:/home/.gitconfig-personal
 ```
 
 
@@ -34,7 +34,7 @@ Add hozzá a következő beállításokat:
 ```
 
 
-#### Hobby beállítások (`D:/home/.gitconfig-home`):
+#### Hobby beállítások (`D:/home/.gitconfig-personal`):
 ```
 [user]
     name = Hobby Nevem

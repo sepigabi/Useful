@@ -55,9 +55,11 @@ Include `.gitkeep` in empty folders to keep them in the repo.
 │   │   ├── /demo-app               # Demo Angular/Vue/React app
 │── /docs
 │   ├── /architecture.md
-│   ├── /development-setup.md
-│   ├── /changelog.md
+│   ├── /functional-specification.md
 │   ├── /user-guide.md
+│   ├── /development-setup.md
+│   ├── /usage.md
+│   ├── /deployment-guide.md
 │   ├── /openapi.yaml
 │   ├── /changelog.md           
 │── /scripts     

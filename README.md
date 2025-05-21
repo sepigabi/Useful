@@ -1,1 +1,31 @@
-# Useful codes here
+# 🧰 Code Snippets & Developer Guides Repository
+
+In this repository, you'll find a collection of **useful code snippets** and **developer guides** to streamline your work and provide quick answers to common setup or configuration issues.
+
+---
+
+## 📚 Topics & Quicklinks
+
+### ⚡ Angular
+- [`add-environments.md`](Angular/Guides/add-environments.md)
+- [`lib-development-setup.md`](Angular/Guides/lib-development-setup.md)
+
+### 🌀 Git
+- [`directory-level-config.md`](Git/directory-level-config.md)
+
+### 🐙 GitHub
+- [`package-view-permissions.md`](GitHub/package-view-permissions.md)
+- [`repo-setup-guide.md`](GitHub/repo-setup-guide.md)
+- [`workflow-variables.md`](GitHub/workflow-variables.md)
+
+### 🧩 Visual Studio
+- [`visual-studio-config-dropdown-width.md`](VisualStudio/visual-studio-config-dropdown-width.md)
+- [`visual-studio-mixed-resolution-monitors.md`](VisualStudio/visual-studio-mixed-resolution-monitors.md)
+
+### 📋 Documentation & Project Management
+- [`projektmenedzsment_tanacsok.md`](projektmenedzsment_tanacsok.md)
+
+---
+
+📌 These guides are here to save time, prevent repetitive searches, and improve development efficiency. Contributions and updates are welcome!
+

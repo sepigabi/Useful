@@ -14,8 +14,8 @@ In this repository, you'll find a collection of **useful code snippets** and **d
 - [`directory-level-config.md`](Git/directory-level-config.md)
 
 ### 🐙 GitHub
-- [`package-view-permissions.md`](GitHub/package-view-permissions.md)
 - [`repo-setup-guide.md`](GitHub/repo-setup-guide.md)
+- [`package-view-permissions.md`](GitHub/package-view-permissions.md)
 - [`workflow-variables.md`](GitHub/workflow-variables.md)
 
 ### 🧩 Visual Studio

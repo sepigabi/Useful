@@ -1,4 +1,0 @@
-https://developercommunity.visualstudio.com/t/visual-studio-19-does-not-work-correctly-with-mixe/1359184
-
-itt kell pipát berakni/kiszedni:
-Tools -> Options -> Environment -> General -> Optimize rendering for screens with different pixel densities(requires restart)

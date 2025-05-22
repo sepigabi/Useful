@@ -130,7 +130,7 @@ Before publishing, ensure your library's `package.json` (at `projects/user-prefe
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/SepiGabi/SG.UserPreferences.git"
+    "url": "https://github.com/sepigabi/SG.UserPreferences.git"
   },
   "peerDependencies": {
     "@microsoft/signalr": "^8.0.7",

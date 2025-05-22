@@ -59,6 +59,8 @@ Navigate to `projects/user-preferences/package.json` and:
 
 ```json
 "peerDependencies": {
+  "@angular/common": "^19.1.0",
+  "@angular/core": "^19.1.0",
   "@microsoft/signalr": "^8.0.7",
   "@ngrx/operators": "^19.0.1",
   "@ngrx/signals": "^19.0.1"

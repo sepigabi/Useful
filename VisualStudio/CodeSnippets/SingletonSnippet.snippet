@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Singleton pattern snippet</Title>
+      <Author>Gabor Sepsei</Author>
+      <Shortcut>singleton</Shortcut>
+      <Description>Create a singleton pattern snippet</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>ClassName</ID>
+          <ToolTip>Replace with the name of the class</ToolTip>
+          <Default>Foo</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[private static readonly Object sync;
+        private static volatile $ClassName$ instance;
+
+        static $ClassName$()
+        {
+            sync = new Object();
+        }
+        private $ClassName$()
+        {
+        }
+
+        public static $ClassName$ Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (sync)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new $ClassName$();
+                        }
+                    }
+                }
+                return instance;
+            }
+        }
+        $end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

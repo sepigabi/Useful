@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Event snippet</Title>
+      <Author>Gabor Sepsei</Author>
+      <Shortcut>event</Shortcut>
+      <Description>Create an event snippet</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>EventName</ID>
+          <ToolTip>Replace with the name of the event</ToolTip>
+          <Default>SomethingHappened</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[public event EventHandler<$EventName$EventArgs> $EventName$;
+
+        protected virtual void On$EventName$( $EventName$EventArgs e )
+        {
+            $EventName$?.Invoke( this, e );
+        }
+        $end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

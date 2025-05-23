@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>IDisposable implementation snippet</Title>
+	  <Author>Gabor Sepsei</Author>
+	  <Description>Create an IDisposable implementation snippet</Description>
+      <Shortcut>dispose</Shortcut>
+    </Header>
+    <Snippet>
+	  <Declarations>
+		<Literal default="true" Editable="false">
+          <ID>classname</ID>
+          <ToolTip>Class name</ToolTip>
+          <Function>ClassName()</Function>
+          <Default>ClassNamePlaceholder</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[private bool disposed = false;
+				public void Dispose()
+				{
+					Dispose(disposing: true);
+					GC.SuppressFinalize(this);
+				}
+				
+				protected virtual void Dispose(bool disposing)
+				{
+					if (disposed)
+						return;
+
+					if (disposing)
+					{
+						// Free any other managed objects here.
+					}
+			
+					// Free any unmanaged objects here.
+
+					disposed = true;
+				}
+				
+				// Uncomment the following line if the finalizer is overridden above.
+				//~$classname$()
+				//{
+				//    Dispose(false);
+				//}
+		]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

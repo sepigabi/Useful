@@ -233,6 +233,92 @@ jobs:
 - Use a `vX.X.X` tag pattern to trigger publishing automatically.
 - Set the correct `scope` and `registry-url` in `setup-node`.
 
+✅ With either approach, your Angular library can be published and consumed as a versioned NPM package via GitHub Packages.
+
 ---
 
-✅ With either approach, your Angular library can be published and consumed as a versioned NPM package via GitHub Packages.
+## 📦 Publishing to the Public NPM Registry
+
+You can also publish your Angular library to the **public NPM registry** instead of GitHub Packages.
+
+---
+
+### 🧱 Prerequisites
+
+Update the `projects/user-preferences/package.json` file as follows:
+
+```json
+{
+  "name": "ngx-user-preferences",
+  "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sepigabi/SG.UserPreferences.git"
+  },
+  "peerDependencies": {
+    "@angular/common": "^19.1.0",
+    "@angular/core": "^19.1.0",
+    "@microsoft/signalr": "^8.0.7",
+    "@ngrx/operators": "^19.0.1",
+    "@ngrx/signals": "^19.0.1"
+  }
+  ...
+}
+```
+
+---
+
+### 🖐 Manual Publishing (from Local Machine)
+
+```bash
+ng build user-preferences
+npm login
+cd dist/user-preferences
+npm publish --access public
+```
+
+---
+
+### 🤖 Automated Publishing (via GitHub Actions)
+
+```yaml
+name: Build and Publish to Public NPM
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish-npm:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org/'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build library
+        run: npm run build user-preferences
+
+      - name: Publish to NPM
+        run: |
+          cd dist/user-preferences
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+```
+
+✅ You're now fully equipped to publish your Angular library to both GitHub Packages and the public NPM registry.
+

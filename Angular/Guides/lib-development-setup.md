@@ -10,7 +10,7 @@ This guide walks you through the creation and setup of an Angular library named 
 2. Create a new Angular workspace **without an application**:
 
 ```bash
-ng new user-preferences-sdk --create-application=false
+ng new user-preferences-sdk --create-application=false --skip-git=true
 ```
 
 3. Navigate into the newly created workspace:

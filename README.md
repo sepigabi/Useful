@@ -9,6 +9,7 @@ In this repository, you'll find a collection of **useful code snippets** and **d
 ### ⚡ Angular
 - [`add-environments.md`](Angular/Guides/add-environments.md)
 - [`lib-development-setup.md`](Angular/Guides/lib-development-setup.md)
+- [`lib-development-configurable.md`](Angular/Guides/lib-development-configurable.md)
 
 ### 🌀 Git
 - [`directory-level-config.md`](Git/directory-level-config.md)

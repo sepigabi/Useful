@@ -124,5 +124,5 @@ export const appConfig: ApplicationConfig = {
 ---
 
 📖 **Source & Inspiration:**  
-[Angular Standalone APIs & Provider Patterns – Manfred Steyer, Angular Architects](https://www.angulararchitects.io/blog/angular-standalone-apis-and-provider-patterns/)
+[Angular Standalone APIs & Provider Patterns – Manfred Steyer, Angular Architects](https://www.angulararchitects.io/blog/patterns-for-custom-standalone-apis-in-angular/)
 

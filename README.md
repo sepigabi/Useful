@@ -7,6 +7,7 @@ In this repository, you'll find a collection of **useful code snippets** and **d
 ## 📚 Topics & Quicklinks
 
 ### ⚡ Angular
+- [`getting-started.md`](Angular/Guides/getting-started.md)
 - [`add-environments.md`](Angular/Guides/add-environments.md)
 - [`lib-development-setup.md`](Angular/Guides/lib-development-setup.md)
 - [`lib-development-configurable.md`](Angular/Guides/lib-development-configurable.md)

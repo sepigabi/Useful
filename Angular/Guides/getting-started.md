@@ -69,6 +69,20 @@ Basic setup inside your `app.config.ts` or `app.module.ts` for using translation
 
 ---
 
+## 🌱 Don't Forget: Setup Environments
+
+Angular supports environment-specific configuration files for handling differences between development, staging, and production.
+
+➡ To learn how to add and use custom environments properly, see:  
+[📄 add-environments.md](./add-environments.md)
+
+This step is important for managing:
+- Different API URLs
+- Feature toggles
+- Logging levels
+
+---
+
 ## 🗂️ Suggested Project Structure
 
 A clean, modular folder structure helps to scale Angular projects efficiently. Below is a recommended structure for a modern Angular application using **standalone APIs**, **feature-first design**, and **clear separation of concerns**.

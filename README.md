@@ -21,6 +21,7 @@ In this repository, you'll find a collection of **useful code snippets** and **d
 - [`workflow-variables.md`](GitHub/workflow-variables.md)
 
 ### 🧩 Visual Studio
+- [`nuget-config.md`](VisualStudio/nuget-config.md)
 - [`visual-studio-config-dropdown-width.md`](VisualStudio/visual-studio-config-dropdown-width.md)
 - [`visual-studio-mixed-resolution-monitors.md`](VisualStudio/visual-studio-mixed-resolution-monitors.md)
 

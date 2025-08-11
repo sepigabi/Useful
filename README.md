@@ -12,7 +12,7 @@ In this repository, you'll find a collection of **useful code snippets** and **d
 - [`lib-development-setup.md`](Angular/Guides/lib-development-setup.md)
 - [`lib-development-configurable.md`](Angular/Guides/lib-development-configurable.md)
 
-- ### 🖥️ Server Management
+### 🖥️ Server Management
 - [`ubuntu_vps_guide.md`](ubuntu_vps_guide.md)
 
 ### 🌀 Git
